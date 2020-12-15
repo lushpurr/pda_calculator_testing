@@ -10,10 +10,31 @@ describe('App.vue', () => {
     expect(wrapper.vm.runningTotal).to.equal(9)
   })
 
+  // add() - add 1 to 4 and get 5
   it('should be able to add two numbers', () => {
     const wrapper = shallowMount(App)
     wrapper.vm.previousTotal = 4
     wrapper.vm.add('1');
-    expect (wrapper.vm.runningTotal).to.equal(5)
+    expect(wrapper.vm.runningTotal).to.equal(5)
   })
+
+  // subtract() subtract 4 from 7 and get 3
+  it('should be able to subtract number', () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.previousTotal = 7
+    wrapper.vm.subtract('4');
+    expect(wrapper.vm.runningTotal).to.equal(3)
+  })
+
+  // multiply() - multiply 3 by 5 and get 15
+  // divide() - divide 21 by 7 and get 3
+// numberClick() - concatenate multiple number button clicks
+// operatorClick() - chain multiple operations together
+// clearClick() - clear the running total without affecting the calculation
+
+
 })
+
+
+
+
