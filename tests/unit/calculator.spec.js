@@ -51,6 +51,17 @@ it('should be able to concatenate multiple number button clicks', () => {
   expect(wrapper.vm.runningTotal).to.equal(723)
 })
 // operatorClick() - chain multiple operations together
+it('should be able to chain multiple operations together', () => {
+  const wrapper = shallowMount(App)
+  wrapper.vm.previousTotal = 1
+  wrapper.vm.previousOperator = '+'
+  wrapper.vm.numberClick('8');
+  wrapper.vm.operatorClick('*');
+  wrapper.vm.numberClick('2');
+  wrapper.vm.operatorClick('=');
+ expect(wrapper.vm.runningTotal).to.equal(18)
+})
+
 // clearClick() - clear the running total without affecting the calculation
 
 
