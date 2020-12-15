@@ -27,7 +27,19 @@ describe('App.vue', () => {
   })
 
   // multiply() - multiply 3 by 5 and get 15
+  it('should be able to multiply', () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.previousTotal = 3
+    wrapper.vm.multiply('5');
+    expect(wrapper.vm.runningTotal).to.equal(15)
+  })
   // divide() - divide 21 by 7 and get 3
+  it('should be able to divide, () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.previousTotal = 21
+    wrapper.vm.divide('7');
+    expect(wrapper.vm.runningTotal).to.equal(3)
+  })
 // numberClick() - concatenate multiple number button clicks
 // operatorClick() - chain multiple operations together
 // clearClick() - clear the running total without affecting the calculation
