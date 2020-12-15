@@ -41,6 +41,15 @@ describe('App.vue', () => {
     expect(wrapper.vm.runningTotal).to.equal(3)
   })
 // numberClick() - concatenate multiple number button clicks
+it('should be able to concatenate multiple number button clicks', () => {
+  const wrapper = shallowMount(App)
+  wrapper.vm.runningTotal = 0
+  wrapper.vm.newTotal = true
+  wrapper.vm.numberClick('7');
+  wrapper.vm.numberClick('2');
+  wrapper.vm.numberClick('3');
+  expect(wrapper.vm.runningTotal).to.equal(723)
+})
 // operatorClick() - chain multiple operations together
 // clearClick() - clear the running total without affecting the calculation
 
