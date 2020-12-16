@@ -63,7 +63,18 @@ it('should be able to chain multiple operations together', () => {
 })
 
 // clearClick() - clear the running total without affecting the calculation
-
+it('should be able to clear running total', () => {
+  const wrapper = shallowMount(App)
+  wrapper.vm.previousTotal = 1
+  wrapper.vm.previousOperator = '+'
+  wrapper.vm.numberClick('8'); 
+  wrapper.vm.clearClick(); // resets runningTotal = " "
+  wrapper.vm.numberClick('2');
+  wrapper.vm.operatorClick('*');
+  wrapper.vm.numberClick('2');
+  wrapper.vm.operatorClick('=');
+ expect(wrapper.vm.runningTotal).to.equal(6)
+})
 
 })
 
