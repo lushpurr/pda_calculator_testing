@@ -18,7 +18,7 @@ describe('calculator', () => {
   })
 
 // Do the arithmetical operations update the display with the result of the operation?
-it('should update the display of the running total on button press', () => {
+it('should update the display of the running total after arithmetical operation', () => {
   cy.get('#number2').click();
   cy.get('#operator_add').click();
   cy.get('#number3').click();
@@ -27,6 +27,16 @@ it('should update the display of the running total on button press', () => {
 })
 
 // Can multiple operations be chained together?
+it('should update the display of the running total with multiple arithmetical operations', () => {
+  cy.get('#number2').click(); // 2
+  cy.get('#operator_add').click(); // +
+  cy.get('#number3').click();  // 3
+  cy.get('#operator_equals').click();// runningTotal = 5
+  cy.get('#operator_multiply').click() // *
+  cy.get('#number8').click(); // 8
+  cy.get('#operator_equals').click();
+  cy.get('.display').should('contain', '40')
+})
 
 
 // Is the output as expected for a range of numbers (for example, positive, negative, decimals and very large numbers)?
