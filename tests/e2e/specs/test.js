@@ -40,7 +40,25 @@ it('should update the display of the running total with multiple arithmetical op
 
 
 // Is the output as expected for a range of numbers (for example, positive, negative, decimals and very large numbers)?
-
+it('should be able to work with negative, positive and very large numbers', () => {
+  cy.get('#number2').click(); // 2
+  cy.get('#operator_subtract').click(); // 
+  cy.get('#number3').click();  // 3
+  cy.get('#operator_equals').click();// runningTotal = -1
+  cy.get('#operator_multiply').click() // *
+  cy.get('#number8').click(); // 8
+  cy.get('#operator_equals').click(); // runningTotal = -8
+  cy.get('#operator_multiply').click();
+  cy.get('#number1').click(); // 1
+  cy.get('#number0').click(); // 0
+  cy.get('#number0').click(); // 0
+  cy.get('#number0').click(); // 0
+  cy.get('#number0').click(); // 0
+  cy.get('#number0').click(); // 0
+  cy.get('#number0').click(); // 0
+  cy.get('#operator_equals').click(); // -8000000
+  cy.get('.display').should('contain', '-8000000')
+})
 
 // What does the code do in exceptional circumstances? Specifically, if you divide by zero, what is the effect? Write a test to describe what you'd prefer to happen, and then correct the code to make that test pass (you will need to modify the Calculator model to meet this requirement).
 })
