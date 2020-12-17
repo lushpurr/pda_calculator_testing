@@ -69,14 +69,24 @@ it('should be able to work with negative, positive and very large numbers', () =
 // and then correct the code to make that test pass 
 //(you will need to modify the Calculator model to meet this requirement).
 
-it('should be able to divide by zero', () => {
+
+// Gives an error message when the divisor is 0
+it('should give an error when attempting to divide by zero', () => {
   cy.get('#number2').click();
   cy.get('#operator_divide').click();
   cy.get('#number0').click();
   cy.get('#operator_equals').click();
-  cy.get('.display').should('contain', '2')
+  cy.get('.display').should('contain', 'Error')
 })
 
+// this test just to confirm that other division functionality still works
+it('should be able to divide by 1', () => {
+  cy.get('#number2').click();
+  cy.get('#operator_divide').click();
+  cy.get('#number1').click();
+  cy.get('#operator_equals').click();
+  cy.get('.display').should('contain', '2')
+})
 
 
 })
